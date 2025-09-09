@@ -1,26 +1,38 @@
 import { useState } from "react";
 import "./shows.css";
-// import EpisodeDetails from "../episodes/EpisodeDetails";
-// import EpisodeList from "../episodes/EpisodeList";
-
+import EpisodeDetails from "../episodes/EpisodeDetails";
+import EpisodeList from "../episodes/EpisodeList";
 /** Allows users to browse through the episodes of the given show */
-export default function ShowDetails({ selectedTvShow }) {
-  const [selectedTvShowEpisodes, setSelectedTvShowEpisodes] = useState(
-    selectedTvShow.episodes
-  );
 
-  if (!selectedTvShow.name) {
-    return <p>Please select a Tv Show from above</p>;
+export default function ShowDetails({ selectedShow }) {
+  if (!selectedShow) {
+    return (
+      <section>
+        <h2>Please select a TV show</h2>
+      </section>
+    );
   }
 
-  console.log(selectedTvShow.episodes);
+  const [selectedEpisodes, setselectedEpisodes] = useState(
+    selectedShow.episodes
+  );
+
+  const [selectedEpisode, setselectedEpisode] = useState(null);
+
   return (
     <section>
-      <ul>
-        {selectedTvShowEpisodes.map((episode) => {
-          return <li key={episode.name}>{episode.name}</li>;
-        })}
-      </ul>
+      <header>
+        <h2>{selectedShow.name}</h2>
+      </header>
+      <div>
+        <EpisodeList
+          name={selectedShow.name}
+          episodes={selectedEpisodes}
+          selectedEpisode={selectedEpisode}
+          setselectedEpisode={setselectedEpisode}
+        />
+        <EpisodeDetails episode={selectedEpisode} />
+      </div>
     </section>
   );
 }

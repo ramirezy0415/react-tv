@@ -5,25 +5,29 @@
 
 import { useState } from "react";
 import { tvShows } from "./shows/data";
-import ShowSelection from "./shows/ShowSelection";
 import ShowDetails from "./shows/ShowDetails";
+import ShowSelection from "./shows/ShowSelection";
+import "./index.css";
 
-export default function App() {
-  const [tvShowsList, setTvShows] = useState(tvShows);
-  const [selectedTvShow, setselectedTvShow] = useState(tvShows);
+function App() {
+  const [shows, setShows] = useState(tvShows);
+  const [selectedShow, setSelectedShow] = useState(null);
+
   return (
     <>
-      <header>
-        <p>React TV</p>
+      <header className="app-header">
+        <h1 className="brand">React TV</h1>
         <ShowSelection
-          tvShowList={tvShowsList}
-          selectedTvShow={selectedTvShow}
-          setselectedTvShow={setselectedTvShow}
+          shows={shows}
+          selectedShow={selectedShow}
+          setSelectedShow={setSelectedShow}
         />
       </header>
-      <main>
-        <ShowDetails selectedTvShow={selectedTvShow} />
+      <main className="app-main">
+        <ShowDetails selectedShow={selectedShow} />
       </main>
     </>
   );
 }
+
+export default App;

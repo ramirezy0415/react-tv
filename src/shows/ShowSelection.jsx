@@ -2,19 +2,23 @@ import "./shows.css";
 
 /** A navbar that allows users to choose between a list of shows */
 export default function ShowSelection({
-  tvShowList,
-  selectedTvShow,
-  setselectedTvShow,
+  shows,
+  selectedShow,
+  setSelectedShow,
 }) {
-  function handleClick(show) {
-    return setselectedTvShow(show);
-  }
+  const handleClick = (item) => {
+    setSelectedShow(item);
+  };
 
   return (
-    <nav className="shows">
-      {tvShowList.map((show) => {
+    <nav className="shows-nav">
+      {shows.map((show) => {
         return (
-          <button key={show.name} onClick={() => handleClick(show)}>
+          <button
+            onClick={() => handleClick(show)}
+            key={show.name}
+            type="button"
+          >
             {show.name}
           </button>
         );
