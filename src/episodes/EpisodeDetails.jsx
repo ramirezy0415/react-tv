@@ -2,7 +2,6 @@ import "./episodes.css";
 
 /** Details about the selected episode */
 export default function EpisodeDetails({ episode }) {
-  console.log(episode);
   if (!episode) {
     return (
       <section className="episode-details">

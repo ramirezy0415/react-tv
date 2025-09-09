@@ -11,16 +11,12 @@ export default function ShowSelection({
   };
 
   return (
-    <nav className="shows-nav">
+    <nav className="shows">
       {shows.map((show) => {
         return (
-          <button
-            onClick={() => handleClick(show)}
-            key={show.name}
-            type="button"
-          >
+          <a onClick={() => handleClick(show)} key={show.name} className="show">
             {show.name}
-          </button>
+          </a>
         );
       })}
     </nav>

@@ -13,21 +13,14 @@ export default function ShowDetails({ selectedShow }) {
     );
   }
 
-  const [selectedEpisodes, setselectedEpisodes] = useState(
-    selectedShow.episodes
-  );
-
   const [selectedEpisode, setSelectedEpisode] = useState(null);
 
   return (
     <section>
-      <header>
-        <h2>{selectedShow.name}</h2>
-      </header>
       <div>
         <EpisodeList
           name={selectedShow.name}
-          episodes={selectedEpisodes}
+          episodes={selectedShow.episodes}
           selectedEpisode={selectedEpisode}
           setSelectedEpisode={setSelectedEpisode}
         />
